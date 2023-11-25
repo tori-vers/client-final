@@ -1,2 +1,2 @@
-# client-final
-final for distributed web systems
+# client-side
+client side web app

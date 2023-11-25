@@ -1,0 +1,6 @@
+[
+    {"id": 0, "name": "Kirk", "desc": "Captain of the USS Enterprise.", "image":"/kirk.png"},
+    {"id": 1, "name": "Spock", "desc": "Science Officer of the USS Enterprise", "image":"/spock.png"},
+    {"id": 2, "name": "Uhura", "desc": "Communication Officer of the USS Enterprise", "image":"/uhura.png"},
+    {"id": 3, "name": "Gorn", "desc": "Man in a lizard costume", "image": "/gorn.png"}    
+]

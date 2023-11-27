@@ -1,6 +1,25 @@
 
 // the Header Section is not generated from the REST API.
 
+function changeUniverse(uni) {
+
+  var xhttp = new XMLHttpRequest();
+  let url = `/application/character/${uni}`;
+
+  xhttp.open("GET", url, true);
+  xhttp.send();
+
+  xhttp.onload = function() {
+    if (xhttp.status == 200) {
+      var data = JSON.parse(xhttp.responseText);
+      refreshPage(data);
+    } else {
+      console.error("Error with universe", xhttp.status, xhttp.responseText);
+    }
+  }
+
+}
+
 
 function changeContent(id) {
   // HTTP request

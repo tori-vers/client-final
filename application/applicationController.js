@@ -29,5 +29,11 @@ class applicationController {
     return { error: "finalData character not found" , id};
   }
 }
+
+  getCharacterByUni(uni) {
+    const universe = this.finalData[uni];
+    return universe;
+  }
+
 }
 module.exports = applicationController;

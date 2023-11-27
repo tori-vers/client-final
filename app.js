@@ -11,7 +11,7 @@ app.use('/application/', applicationRouter);
 app.use('/', publicRouter);
 
 
-const PORT  = process.env.PORT || 3055
+const PORT  = process.env.PORT || 3054
 app.listen(PORT,()=> console.info(`Server has started on ${PORT}`));
 
 

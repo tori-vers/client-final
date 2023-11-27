@@ -14,7 +14,7 @@ function changeUniverse(uni) {
       var data = JSON.parse(xhttp.responseText);
       refreshPage(data);
     } else {
-      console.error("Error with universe", xhttp.status, xhttp.responseText);
+      console.error("Error with universe", xhttp.status);
     }
   }
 

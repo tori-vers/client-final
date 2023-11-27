@@ -6,7 +6,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-  <link type="text/css" rel="stylesheet" href="style.css"/>
 
   <script src="application.js"></script>
   <script src="/routes/public.js"></script>
@@ -61,6 +60,14 @@
       cursor: pointer;
     }
 
+
+  .dropdown-toggle {
+    background-color: #a7e69f;
+    color: #ffffff;
+    border-color: #ffffff; 
+  }
+
+
     footer {
       background-color: rgb(42, 65, 57);
       grid-column-start: 1;
@@ -86,18 +93,41 @@
 <body>
 
   <div class="container">
-    <header>
-      <button id="Trek" onclick="changeUniverse('trek')">Trek Universe</button>
-      <button id="Test1" onclick="changeUniverse('test1')">Test Universe</button>
+    <header class="d-flex justify-content-between align-items-center">
 
 
-      <button id="Kirk" onclick="changeContent(0)">Kirk</button>
-      <button id="Spock" onclick="changeContent(1)">Spock</button>
-      <button id="Uhura" onclick="changeContent(2)">Uhura</button>
-      <button id="Gorn" onclick="changeContent(3)">Gorn</button>
     </header>
 
-    <aside>SideBar</aside>
+    <aside class="d-flex justify-content-center">
+
+
+        <div class="dropdown" style="margin-top: 20px;">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="universeDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            By Universe
+          </button>
+          <div class="dropdown-menu" aria-labelledby="universeDropdown">
+            <button class="dropdown-item" onclick="changeUniverse('trek')">Star Trek</button>
+            <button class="dropdown-item" onclick="changeUniverse('test1')">Universe 2</button>
+            <button class="dropdown-item" onclick="changeUniverse('test2')">Universe 3</button>
+          </div>
+
+          <div style="margin-top: 20px;"></div>
+
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="universeDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              By Universe
+            </button>
+            <div class="dropdown-menu" aria-labelledby="universeDropdown">
+              <button class="dropdown-item" onclick="changeUniverse('trek')">Trek</button>
+              <button class="dropdown-item" onclick="changeUniverse('test1')">Test1</button>
+              <button class="dropdown-item" onclick="changeUniverse('test2')">Test2</button>
+            </div>
+
+            <div style="margin-top: 20px;">
+            <button class="btn btn-secondary" onclick="showAllCharacters()">All Characters</button>
+            </div>
+
+    </aside>
 
     <main>
       <div class="row">

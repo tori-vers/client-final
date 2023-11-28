@@ -46,6 +46,23 @@ function refreshPage(data) {
   document.querySelector("#name").textContent = data.name;
   document.querySelector("#desc").textContent = data.desc;
   document.querySelector("#image").src = data.image;
-
+  
+  //favorite button - heart
+  var heartIcon = document.createElement("div");
+  heartIcon.classList.add("heart-icon");
+  if (isFavorite(data.id)) {
+    heartIcon.classList.add("favorite");
+  }
+  var existingButton = document.querySelector(".heart-icon");
+  if (existingButton) {
+    existingButton.replaceWith(heartIcon);
+  } else {
+    document.querySelector("#buttons").appendChild(heartIcon);
+  }
+  heartIcon.addEventListener("click", function () {
+    toggleFavorite(data.id);
+  });
 }
+  
+
 

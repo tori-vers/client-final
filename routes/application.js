@@ -6,7 +6,7 @@ var applicationController = require('../application/applicationController');
 
 
 router.get('/character', function(req, res, next) {
-    Console.log("(Routes) Application: /character started!");
+    console.log("(Routes) Application: /character started!");
 
     appController = new applicationController();
     html = appController.getAllCharacters();
@@ -14,7 +14,7 @@ router.get('/character', function(req, res, next) {
 });
 
 router.get('/character/:id', function(req, res, next) {
-    Console.log("(Routes) Application: /character/:id started!");
+    console.log("(Routes) Application: /character/:id started!");
 
     appController = new applicationController();
     html = appController.getCharacterById(req.params.id);

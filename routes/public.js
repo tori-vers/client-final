@@ -4,13 +4,13 @@ var router = express.Router();
 const path = require("path");
 
 router.get('/', function(req, res, next) {
-    Console.log("Public: / started!");
+    console.log("Public: / started!");
 
     res.sendFile(path.resolve('public/index.html') );
 });
 
 router.get('/*', function(req, res, next) {
-    Console.log("Public: /* started!");
+    console.log("Public: /* started!");
 
     res.sendFile(path.resolve('public/' + req.url) );
 });

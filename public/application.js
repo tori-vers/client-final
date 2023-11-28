@@ -2,7 +2,7 @@
 // the Header Section is not generated from the REST API.
 
 function changeUniverse(uni) {
-  Console.log("(Public) Application: changeUniverse() started!");
+  console.log("(Public) Application: changeUniverse() started!");
 
   var xhttp = new XMLHttpRequest();
   let url = `/application/character/${uni}`;
@@ -23,7 +23,7 @@ function changeUniverse(uni) {
 
 
 function changeContent(id) {
-  Console.log("(Public) Application: changeContent() started!");
+  console.log("(Public) Application: changeContent() started!");
 
   // HTTP request
   //  console.log("testing");
@@ -45,7 +45,7 @@ function changeContent(id) {
 }
 
 function refreshPage(data) {
-  Console.log("(Public) Application: refreshPage() started!");
+  console.log("(Public) Application: refreshPage() started!");
  //buttons
   document.querySelector("#name").textContent = data.name;
   document.querySelector("#desc").textContent = data.desc;

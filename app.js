@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 
 var applicationRouter = require('./routes/application');
-var publicRouter = require('./routes/public');
+var publicRouter = require('./routes/public'); 
 console.log("App: requirements done.");
 
 var app = express();

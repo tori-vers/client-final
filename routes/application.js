@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 
 var applicationController = require('../application/applicationController');
-
+console.log("(Routes) Application: variables declared.");
 
 router.get('/character', function(req, res, next) {
     console.log("(Routes) Application: /character started!");

@@ -1,4 +1,5 @@
 const fs = require('fs');
+console.log("ApplicationController: variables declared.");
 
 class applicationController {
 

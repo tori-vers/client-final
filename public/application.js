@@ -1,6 +1,21 @@
 
 // the Header Section is not generated from the REST API.
+let favorites = [];
 
+// check if a character is a favorite
+function isFavorite(characterId) {
+  return favorites.includes(characterId);
+}
+
+//mark a character as a favorite
+function toggleFavorite(characterId) {
+  if (isFavorite(characterId)) {
+    favorites = favorites.filter(id => id !== characterId);
+  } else {
+    favorites.push(characterId);
+  }
+  refreshPage(data); 
+}
 function changeUniverse(uni) {
   console.log("(Public) Application: changeUniverse() started!");
 
@@ -20,8 +35,6 @@ function changeUniverse(uni) {
   }
 
 }
-
-
 function changeContent(id) {
   console.log("(Public) Application: changeContent() started!");
 

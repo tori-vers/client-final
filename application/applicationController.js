@@ -1,7 +1,7 @@
 const fs = require('fs');
 console.log("ApplicationController: variables declared.");
 
-class applicationController {
+class ApplicationController {
 
     constructor(req) {
         console.log("ApplicationController: constructor() started");
@@ -10,14 +10,51 @@ class applicationController {
             console.log("Reading JSON");
             var rawData = fs.readFileSync("application/data/applicationData.json");
 
-            console.log("parsing");
+            console.log("Parsing");
             this.finalData = JSON.parse(rawData);
 
             console.log("Loaded", this.finalData);
-        } catch(error) {
+        } catch (error) {
             console.error("Error with reading/parsing JSON file", error);
         }
+
+        // Initialize user object
+        this.user = {
+            id: 1,
+            favorites: [] 
+        };
     }
+    toggleFavorite(characterId) {
+        const index = this.user.favorites.indexOf(characterId);
+
+        if (index !== -1) {
+            this.user.favorites.splice(index, 1);
+        } else {
+            // If the character is not a favorite, add it
+            this.user.favorites.push(characterId);
+        }
+
+        // Now, this.user.favorites array reflects the updated list of favorite characters
+        console.log('Updated favorites:', this.user.favorites);
+
+        // Return the updated favorites list or perform additional actions as needed
+        return this.user.favorites;
+    }
+
+    getFavorites() {
+        console.log("ApplicationController: getFavorites() started");
+
+        // Assuming this.finalData is available and contains character information
+        const userFavorites = this.finalData.filter(character => {
+            return this.user.favorites.includes(character.id);
+        });
+
+        console.log('User favorites:', userFavorites);
+
+        // Return the userFavorites or perform additional actions as needed
+        return userFavorites;
+    }
+
 
     getAllCharacters() {
       console.log("ApplicationController: getAllCharacters() started");
@@ -43,7 +80,5 @@ class applicationController {
         const universe = this.finalData[uni];
         return universe;
     }
-
 }
-
 module.exports = applicationController;

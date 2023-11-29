@@ -1,21 +1,66 @@
 
 // the Header Section is not generated from the REST API.
 let favorites = [];
-
+// Fetch user's favorite characters from the Favorite API
+function getFavorites() {
+  fetch('/favorite')
+    .then(response => response.json())
+    .then(data => {
+      favorites = data;
+      refreshPage(data);
+    })
+    .catch(error => console.error('Error fetching favorites:', error));
+}
 // check if a character is a favorite
 function isFavorite(characterId) {
   return favorites.includes(characterId);
 }
 
-//mark a character as a favorite
 function toggleFavorite(characterId) {
-  if (isFavorite(characterId)) {
-    favorites = favorites.filter(id => id !== characterId);
-  } else {
-    favorites.push(characterId);
-  }
-  refreshPage(data); 
+  fetch(`/favorite/${characterId}`, { method: 'PUT' })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Failed to toggle favorite status');
+      }
+    })
+    .then(data => {
+      favorites = data;
+      refreshPage(data);
+    })
+    .catch(error => console.error('Error toggling favorite:', error));
 }
+// Refresh the page with character data and favorite status
+function refreshPage(data) {
+  console.log("(Public) Application: refreshPage() started!");
+
+  // Update character details
+  document.querySelector("#name").textContent = data.name;
+  document.querySelector("#desc").textContent = data.desc;
+  document.querySelector("#image").src = data.image;
+
+  // Update favorite button - heart
+  var heartIcon = document.createElement("div");
+  heartIcon.classList.add("heart-icon");
+  if (isFavorite(data.id)) {
+    heartIcon.classList.add("favorite");
+  }
+
+  var existingButton = document.querySelector(".heart-icon");
+  if (existingButton) {
+    existingButton.replaceWith(heartIcon);
+  } else {
+    document.querySelector("#buttons").appendChild(heartIcon);
+  }
+
+  heartIcon.addEventListener("click", function () {
+    toggleFavorite(data.id);
+  });
+}
+
+// Initial setup - get user's favorite characters
+getFavorites();
 function changeUniverse(uni) {
   console.log("(Public) Application: changeUniverse() started!");
 
@@ -57,29 +102,7 @@ function changeContent(id) {
   };
 }
 
-function refreshPage(data) {
-  console.log("(Public) Application: refreshPage() started!");
- //buttons
-  document.querySelector("#name").textContent = data.name;
-  document.querySelector("#desc").textContent = data.desc;
-  document.querySelector("#image").src = data.image;
-  
-  //favorite button - heart
-  var heartIcon = document.createElement("div");
-  heartIcon.classList.add("heart-icon");
-  if (isFavorite(data.id)) {
-    heartIcon.classList.add("favorite");
-  }
-  var existingButton = document.querySelector(".heart-icon");
-  if (existingButton) {
-    existingButton.replaceWith(heartIcon);
-  } else {
-    document.querySelector("#buttons").appendChild(heartIcon);
-  }
-  heartIcon.addEventListener("click", function () {
-    toggleFavorite(data.id);
-  });
-}
+
   
 
 

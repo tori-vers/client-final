@@ -8,7 +8,7 @@ console.log("App: requirements done.");
 var app = express();
 console.log("App: express() done.");
 
-app.use(express.static(path.join(__dirname, 'ditto'))); // originally public not ditto
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/application/', applicationRouter);
 app.use('/', publicRouter);
 console.log("App: app.use() done.");

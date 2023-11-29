@@ -33,25 +33,17 @@ class ApplicationController {
             // If the character is not a favorite, add it
             this.user.favorites.push(characterId);
         }
-
-        // Now, this.user.favorites array reflects the updated list of favorite characters
         console.log('Updated favorites:', this.user.favorites);
-
-        // Return the updated favorites list or perform additional actions as needed
         return this.user.favorites;
     }
 
     getFavorites() {
         console.log("ApplicationController: getFavorites() started");
-
-        // Assuming this.finalData is available and contains character information
         const userFavorites = this.finalData.filter(character => {
             return this.user.favorites.includes(character.id);
         });
 
         console.log('User favorites:', userFavorites);
-
-        // Return the userFavorites or perform additional actions as needed
         return userFavorites;
     }
 

@@ -1,6 +1,7 @@
 
 // the Header Section is not generated from the REST API.
 let favorites = [];
+
 // Fetch user's favorite characters from the Favorite API
 function getFavorites() {
   fetch('/favorite')
@@ -11,6 +12,7 @@ function getFavorites() {
     })
     .catch(error => console.error('Error fetching favorites:', error));
 }
+
 // check if a character is a favorite
 function isFavorite(characterId) {
   return favorites.includes(characterId);

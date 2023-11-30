@@ -73,4 +73,4 @@ class ApplicationController {
         return universe;
     }
 }
-module.exports = applicationController;
+module.exports = ApplicationController; // changed from "applicationController" to "ApplicationController"

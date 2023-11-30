@@ -24,6 +24,7 @@ class ApplicationController {
             favorites: [] 
         };
     }
+    
     toggleFavorite(characterId) {
         const index = this.user.favorites.indexOf(characterId);
 

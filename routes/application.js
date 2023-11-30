@@ -7,7 +7,6 @@ console.log("(Routes) Application: variables declared.");
 
 router.get('/character', function(req, res, next) {
     console.log("(Routes) Application: /character started!");
-    console.log("req is " + req + ", res is " + res + ", next is " + next);
 
     appController = new applicationController();
     html = appController.getAllCharacters();
@@ -18,7 +17,6 @@ router.get('/character', function(req, res, next) {
 
 router.get('/character/:id', function(req, res, next) {
     console.log("(Routes) Application: /character/:id started!");
-    console.log("req is " + req + ", res is " + res + ", next is " + next);
 
     appController = new applicationController();
     html = appController.getCharacterById(req.params.id);

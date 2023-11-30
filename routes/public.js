@@ -6,7 +6,6 @@ console.log("Public: variables declared.");
 
 router.get('/', function(req, res, next) {
     console.log("Public: / started!");
-    console.log("req is " + req + ", res is " + res + ", next is " + next);
 
     res.sendFile(path.resolve('public/index.html') );
 
@@ -15,7 +14,6 @@ router.get('/', function(req, res, next) {
 
 router.get('/*', function(req, res, next) {
     console.log("Public: /* started!");
-    console.log("req is " + req + ", res is " + res + ", next is " + next);
 
     res.sendFile(path.resolve('public/' + req.url) );
 

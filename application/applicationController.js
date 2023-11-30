@@ -24,7 +24,7 @@ class ApplicationController {
             favorites: [] 
         };
     }
-    
+
     toggleFavorite(characterId) {
         const index = this.user.favorites.indexOf(characterId);
 
@@ -34,6 +34,7 @@ class ApplicationController {
             // If the character is not a favorite, add it
             this.user.favorites.push(characterId);
         }
+        
         console.log('Updated favorites:', this.user.favorites);
         return this.user.favorites;
     }

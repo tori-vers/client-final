@@ -20,7 +20,7 @@ class ApplicationController {
 
         // Initialize user object
         this.user = {
-            id: 1,
+            id: 1, // should the user id change somehow?
             favorites: [] 
         };
     }

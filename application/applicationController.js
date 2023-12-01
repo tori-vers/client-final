@@ -24,6 +24,7 @@ class applicationController {
   }
 }
 getFavorites() {
+    console.log("getFavorites() started");
     try {
       const rawData = fs.readFileSync(favoritesPath);
       return JSON.parse(rawData);
@@ -33,6 +34,7 @@ getFavorites() {
   }
 
   saveFavorites(favorites) {
+    console.log("saveFavorites() started");
     const data = JSON.stringify(favorites);
     fs.writeFileSync(favoritesPath, data);
   }

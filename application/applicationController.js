@@ -1,78 +1,62 @@
-const fs = require('fs');
-console.log("ApplicationController: variables declared.");
+const fs = require('fs').promises;
 
 class ApplicationController {
-
-    constructor(req) {
-        console.log("ApplicationController: constructor() started");
-
-        try {
-            console.log("Reading JSON");
-            var rawData = fs.readFileSync("application/data/applicationData.json");
-
-            console.log("Parsing");
-            this.finalData = JSON.parse(rawData);
-
-            console.log("Loaded", this.finalData);
-        } catch (error) {
-            console.error("Error with reading/parsing JSON file", error);
-        }
-
-        // Initialize user object
-        this.user = {
-            id: 1, // should the user id change somehow?
-            favorites: [] 
-        };
+  constructor(req) {
+    try {
+      var rawData = fs.readFileSync("application/data/applicationData.json");
+      this.finalData = JSON.parse(rawData);
+    } catch (error) {
+      console.error("Error with reading/parsing JSON file", error);
     }
 
-    toggleFavorite(characterId) {
-        const index = this.user.favorites.indexOf(characterId);
-
-        if (index !== -1) {
-            this.user.favorites.splice(index, 1);
-        } else {
-            // If the character is not a favorite, add it
-            this.user.favorites.push(characterId);
-        }
-        
-        console.log('Updated favorites:', this.user.favorites);
-        return this.user.favorites;
+    try {
+      var favoritesData = fs.readFileSync("application/data/favoritesData.json");
+      this.favorites = JSON.parse(favoritesData);
+    } catch (error) {
+      console.error("Error with reading/parsing favorites JSON file", error);
+      this.readFavoritesData();
     }
+  }
+    async readFavoritesData() {
+      try {
+        const favoritesData = await fs.readFile("application/data/favoritesData.json");
+        this.favorites = JSON.parse(favoritesData);
+      } catch (error) {
+        console.error("Error with reading/parsing favorites JSON file", error);
+        this.favorites = {};
+      }
+  }
 
-    getFavorites() {
-        console.log("ApplicationController: getFavorites() started");
-        const userFavorites = this.finalData.filter(character => {
-            return this.user.favorites.includes(character.id);
-        });
+  getAllCharacters() {
+    return this.finalData;
+  }
 
-        console.log('User favorites:', userFavorites);
-        return userFavorites;
+  getCharacterById(id) {
+    if (id >= 0 && id < this.finalData.length) {
+      const character = this.finalData[id];
+      return character;
+    } else {
+      return { error: "finalData character not found", id };
     }
+  }
 
+  getAllFavorites() {
+    return this.favorites;
+  }
 
-    getAllCharacters() {
-      console.log("ApplicationController: getAllCharacters() started");
+  updateFavoriteStatus(id, isFavorite) {
+    this.favorites[id] = isFavorite;
+    fs.writeFileSync("application/data/favoritesData.json", JSON.stringify(this.favorites, null, 2));
+  }
+  getFavoritesPage() {
+    const favorites = Object.entries(this.favorites)
+      .filter(([characterId, isFavorite]) => isFavorite)
+      .map(([characterId, isFavorite]) => {
+        const character = this.finalData[characterId];
+        return { ...character, isFavorite };
+      });
 
-      //return all characters data
-      return this.finalData;
-    }
-
-    getCharacterById(id) {
-        console.log("ApplicationController: getCharacterById() started");
-
-        // if the id is valid (between 0 and the end of the values)
-        if (id >= 0 && id < this.finalData.length) {
-            const character = this.finalData[id];
-            return character; 
-        } else {
-            return { error: "finalData character not found" , id};
-        }
-    }
-
-    getCharacterByUni(uni) {
-        console.log("ApplicationController: getCharacterByUni() started");
-        const universe = this.finalData[uni];
-        return universe;
-    }
+    return favorites;
 }
-module.exports = ApplicationController; // changed from "applicationController" to "ApplicationController"
+}
+module.exports = ApplicationController;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,22 +11,85 @@
   <script src="/routes/public.js"></script>
 
   <style>
-    header {
-      background-color: beige;
-      grid-column-start: 1;
-      grid-column-end: 3;
+    #buttons button {
+      background-color: purple;
+      color: white;
+      margin-bottom: 10px;
+    }
+    body {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 10px;
+      height: 100vh;
+      margin: 0;
+      background-color: black;
+      color: white;
+      /* Starry background effect */
+      position: relative;
+      overflow: hidden;
     }
 
-    #buttons {
-      display: flex;
-      gap: 1px;
-      margin-left: auto;
+    /* Styling for stars */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
 
+    /* Style for twinkling stars */
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      width: 2px;
+      height: 2px;
+      opacity: 0;
+      animation: twinkling 2s infinite alternate;
+    }
+
+    /* Style for character images */
+    .character-container {
+      text-align: center;
+    }
+
+    .character-card {
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      margin: 10px;
+    }
+
+    .character-image {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid purple;
+    }
+
+    .favorite-button {
+      margin-top: 10px;
+    }
+
+    .character-name {
+      color: white;
+      margin-top: 5px;
+    }
+
+    @keyframes twinkling {
+      0%, 100% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* Additional styles for character cards */
     .card {
       width: 95px;
       height: 95px;
@@ -39,163 +102,155 @@
       width: 100%;
       height: auto;
     }
-
-    .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .popup img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      cursor: pointer;
-    }
-
-
-  .dropdown-toggle {
-    background-color: #a7e69f;
-    color: #ffffff;
-    border-color: #ffffff; 
-  }
-  .heart-icon {
-  width: 30px;
-  height: 30px;
-  background-image: url('./heart.svg');
-  background-size: cover;
-  cursor: pointer;
-  }
-
-    .heart-icon.favorite {
-      background-color: red;
-    }
-
-    footer {
-      background-color: rgb(42, 65, 57);
-      grid-column-start: 1;
-      grid-column-end: 3;
-    }
-
-    aside {
-      background-color: rgb(62, 94, 62);
-    }
-
-    main {
-      background-color: rgb(87, 158, 123);
-    }
-
-    .container {
-      display : grid;
-      grid-template-columns: 30% 70%;
-      grid-template-rows: 50px 300px 50px;
-    }
   </style>
+  
 </head>
-
 <body>
+  <body>
+    <!-- Stars container -->
+    <div class="stars"></div>
 
+    <div class="container">
+        <header class="d-flex justify-content-between align-items-center" id="buttons">
+            <h1>Space Characters - Project</h1>
+        </header>
+
+        <!-- Dropdown for "By Universe" -->
+        <div class="dropdown" style="margin-top: 20px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="universeDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                By Universe
+            </button>
+            <div class="dropdown-menu" aria-labelledby="universeDropdown">
+                <button class="dropdown-item" onclick="changeUniverse('trek')">Star Trek</button>
+                <button class="dropdown-item" onclick="changeUniverse('test1')">Universe 2</button>
+                <button class="dropdown-item" onclick="changeUniverse('test2')">Universe 3</button>
+            </div>
+        </div>
+
+        <!-- Dropdown for "Other Filter" -->
+        <div class="dropdown" style="margin-top: 20px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="otherFilterDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Other Filter
+            </button>
+            <div class="dropdown-menu" aria-labelledby="otherFilterDropdown">
+                <button class="dropdown-item" onclick="changeFilter('trek')">Trek</button>
+                <button class="dropdown-item" onclick="changeFilter('test1')">Test1</button>
+                <button class="dropdown-item" onclick="changeFilter('test2')">Test2</button>
+            </div>
+        </div>
+  
+      <!-- Button to show all characters -->
+      <div style="margin-top: 20px;">
+        <button class="btn btn-secondary" onclick="showAllCharacters()">All Characters</button>
+      </div>
+      <!-- Button for favorites -->
+      <div style="margin-top: 20px;">
+        <a class="btn btn-secondary" href="/favorites.html">Favorites</a>
+      </div>
+    </div>
   <div class="container">
     <header class="d-flex justify-content-between align-items-center" id="buttons">
-
-
+      
     </header>
 
     <aside class="d-flex justify-content-center">
-
-
-        <div class="dropdown" style="margin-top: 20px;">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="universeDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            By Universe
-          </button>
-          <div class="dropdown-menu" aria-labelledby="universeDropdown">
-            <button class="dropdown-item" onclick="changeUniverse('trek')">Star Trek</button>
-            <button class="dropdown-item" onclick="changeUniverse('test1')">Universe 2</button>
-            <button class="dropdown-item" onclick="changeUniverse('test2')">Universe 3</button>
-          </div>
-
-          <div style="margin-top: 20px;"></div>
-
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="universeDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Other Filter
-            </button>
-            <div class="dropdown-menu" aria-labelledby="universeDropdown">
-              <button class="dropdown-item" onclick="changeUniverse('trek')">Trek</button>
-              <button class="dropdown-item" onclick="changeUniverse('test1')">Test1</button>
-              <button class="dropdown-item" onclick="changeUniverse('test2')">Test2</button>
-            </div>
-
-            <div style="margin-top: 20px;">
-            <button class="btn btn-secondary" onclick="showAllCharacters()">All Characters</button>
-            </div>
-
+      <div class="character-container">
+        <!-- Character Cards as Buttons -->
+        <div class="character-card" onclick="changeContent(0)">
+          <img class="character-image" src="kirk.png" alt="Kirk">
+          <div class="character-name">Kirk</div>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0)">Favorite</button>
+        </div>
+        <div class="character-card" onclick="changeContent(1)">
+          <img class="character-image" src="spock.png" alt="Spock">
+          <div class="character-name">Spock</div>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0)">Favorite</button>
+        </div>
+        <div class="character-card" onclick="changeContent(2)">
+          <img class="character-image" src="uhura.png" alt="Uhura">
+          <div class="character-name">Uhura</div>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0)">Favorite</button>
+        </div>
+        <div class="character-card" onclick="changeContent(3)">
+          <img class="character-image" src="gorn.png" alt="Gorn">
+ 
+          <div class="character-name">Gorn</div>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0)">Favorite</button>
+        </div>
+        <div class="character-card" onclick="changeContent(4)">
+          <img class="character-image" src="anakin.png" alt="Anakin Skywalker">
+   
+          <div class="character-name">Anakin Skywalker</div>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0)">Favorite</button>
+        </div>
+        <div class="character-card" onclick="changeContent(5)">
+          <img class="character-image" src="padme.png" alt="Padme Amidala">
+          <div class="character-name">Padme Amidala</div>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0)">Favorite</button>
+        </div>
+        <div class="character-card" onclick="changeContent(6)">
+          <img class="character-image" src="palpatine.png" alt="Palpatine">
+         
+          <div class="character-name">Palpatine</div>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0)">Favorite</button>
+        </div>
+        <div class="character-card" onclick="changeContent(7)">
+          <img class="character-image" src="obiwan.png" alt="Obi-Wan Kenobi">
+          <div class="character-name">Obi-Wan Kenobi</div>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0)">Favorite</button>
+        </div>
+      </div>
     </aside>
 
-    <main>
-      <div class="row">
-        <!-- Card 1 -->
-        <div class="col">
-          <div class="card" onclick="showPopup('Card 1', 'Description 1', 'kirk.png')">
-            <img src="kirk.png" alt="Card 1">
-          </div>
-        </div>
+    <br>
+    <h1><div id="name"></div></h1>
+    <img id="image">
+    <div id="desc"></div>
+    <script>
+      // Create stars dynamically
+      const starsContainer = document.querySelector('.stars');
+      for (let i = 0; i < 200; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.animationDuration = `${Math.random() * 2 + 1}s`; // Varying duration for twinkling
+        starsContainer.appendChild(star);
+      }
+      function fetchFavorites() {
+    $.get('/api/favorites', (data) => {
+      updateFavoritesUI(data);
+    });
+  }
 
-        <!-- Card 2 -->
-        <div class="col">
-          <div class="card" onclick="showPopup('Card 2', 'Description 2', 'spock.png')">
-            <img src="spock.png" alt="Card 2">
-          </div>
-        </div>
+  function toggleFavorite(characterId) {
+      const isFavorite = !$('.character-card[data-character-id="' + characterId + '"]').hasClass('favorite');
 
-        <!-- Card 3 -->
-        <div class="col">
-          <div class="card" onclick="showPopup('Card 3', 'Description 3', 'uhura.png')">
-            <img src="uhura.png" alt="Card 3">
-          </div>
-        </div>
+      // Update UI instantly
+      updateFavoriteUI(characterId, isFavorite);
 
-        <!-- Card 4 -->
-        <div class="col">
-          <div class="card" onclick="showPopup('Card 4', 'Description 4', 'gorn.png')">
-            <img src="gorn.png" alt="Card 4">
-          </div>
-        </div>
-
-
-      </div>
-    </main>
-
-    <footer>footer</footer>
-  </div>
-
-  <!-- Popup -->
-  <div id="popup" class="popup">
-    <span class="close-btn" onclick="hidePopup()">X</span>
-    <h2 id="popup-title">title</h2>
-    <img id="popup-image" src="" alt="">
-    <p id="popup-desc">desc</p>
-  </div>
-
-  <script>
-    function showPopup(title, desc, img) {
-      document.getElementById('popup-title').innerText = title;
-      document.getElementById('popup-desc').innerText = desc;
-      document.getElementById('popup-image').src = img;
-      document.getElementById('popup').style.display = 'block';
+      // Update favorites on the server
+      updateFavoritesOnServer(characterId, isFavorite);
     }
 
-    function hidePopup() {
-      document.getElementById('popup').style.display = 'none';
+    function updateFavoritesOnServer(characterId, isFavorite) {
+      // Send a POST request to update favorites on the server
+      $.post('/api/favorites', { characterId, isFavorite }, (data) => {
+        console.log(data);
+      });
+    }
+
+    function updateFavoritesUI(favorites) {
+      for (const characterId in favorites) {
+        const isFavorite = favorites[characterId];
+        updateFavoriteUI(characterId, isFavorite);
+      }
+    }
+
+    function updateFavoriteUI(characterId, isFavorite) {
+      const $characterCard = $('.character-card[data-character-id="' + characterId + '"]');
+      $characterCard.toggleClass('favorite', isFavorite);
     }
   </script>
-
 </body>
 </html>

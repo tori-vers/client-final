@@ -1,41 +1,32 @@
-var path = require('path');
-var express = require('express');
-var router = express.Router();
-
-var applicationController = require('../application/applicationController');
-console.log("(Routes) Application: variables declared.");
+const express = require('express');
+const router = express.Router();
+const ApplicationController = require('../application/applicationController');
 
 router.get('/character', function(req, res, next) {
-    console.log("(Routes) Application: /character started!");
-
-    appController = new applicationController();
-    html = appController.getAllCharacters();
+    const appController = new ApplicationController();
+    const html = appController.getAllCharacters();
     res.send(html);
-
-    console.log("(Routes) Application: /character done!");
 });
 
 router.get('/character/:id', function(req, res, next) {
-    console.log("(Routes) Application: /character/:id started!");
-
-    appController = new applicationController();
-    html = appController.getCharacterById(req.params.id);
+    const appController = new ApplicationController();
+    const html = appController.getCharacterById(req.params.id);
     res.send(html);
-
-    console.log("(Routes) Application: /character/:id done!");
 });
+router.post('/favorites', function(req, res, next) {
+    const appController = new ApplicationController();
+    const { characterId, isFavorite } = req.body;
 
-
-
-
-
-
-
-
-
-
-
-
+    if (characterId !== undefined && isFavorite !== undefined) {
+      appController.updateFavoriteStatus(characterId, isFavorite);
+      res.json({ success: true });
+    } else {
+      res.status(400).json({ error: "Bad Request" });
+    }
+});
+router.get('/favorites', function(req, res, next) {
+    res.sendFile(path.join(__dirname, 'public', 'favorites.html'));
+});
 
 
 module.exports = router;

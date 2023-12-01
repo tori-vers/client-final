@@ -65,25 +65,36 @@ if (xhttp.status == 200) {
 
 
 function changeUniverse(uni) {
+  console.log("changeUniverse() started", uni);
 
-var xhttp = new XMLHttpRequest();
-let url = `/application/character/${uni}`; 
-xhttp.open("GET", url, true);
-xhttp.send();
-xhttp.onload = function () {
-if (xhttp.status == 200) {
-  data = JSON.parse(xhttp.responseText);
-  refreshPage(data);
-} else {
-  console.error("Error with universe Data", xhttp.status, xhttp.responseText);
-}
-};
+  // Hide/show character cards based on the selected universe
+  const characterCards = document.querySelectorAll('.character-card');
+  characterCards.forEach(card => {
+    const cardUni = card.getAttribute('data-uni');
+    card.style.display = cardUni === uni ? 'block' : 'none';
+  });
+
+  // Make an API request to get characters for the selected universe
+  const xhttp = new XMLHttpRequest();
+  const url = `/application/characters/uni/${uni}`;
+  xhttp.open("GET", url, true);
+  xhttp.send();
+
+  xhttp.onload = function () {
+    if (xhttp.status == 200) {
+      const characters = JSON.parse(xhttp.responseText);
+      displayCharacters(characters);
+    } else {
+      console.error("Error with universe Data", xhttp.status, xhttp.responseText);
+    }
+  };
 }
 
 function changeAlignment(alignment) {
 var xhttp = new XMLHttpRequest();
 let url = `/application/character/${alignment}`; 
 xhttp.open("GET", url, true);
+console.log("URL: ", url);
 xhttp.send();
 xhttp.onload = function () {
 if (xhttp.status == 200) {
@@ -149,6 +160,7 @@ favoriteButton.onclick = () => toggleFavorite(character.id);
 
 card.appendChild(image);
 card.appendChild(name);
+card.setAttribute('data-uni', character.uni);
 card.appendChild(favoriteButton);
 
 return card;

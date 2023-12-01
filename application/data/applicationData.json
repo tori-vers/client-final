@@ -1,17 +1,17 @@
 
 
     [
-        {"id": 0, "uni": "trek", "name": "Kirk", "desc": "Captain of the USS Enterprise.", "image":"/kirk.png"},
-        {"id": 1, "uni": "test1", "name": "Spock", "desc": "Science Officer of the USS Enterprise", "image":"/spock.png"},
-        {"id": 2,"uni": "test2", "name": "Uhura", "desc": "Communication Officer of the USS Enterprise", "image":"/uhura.png"},
-        {"id": 3, "uni": "test2", "name": "Gorn", "desc": "Man in a lizard costume", "image": "/gorn.png"},
-        {"id": 4, "uni": "test2", "name": "Anakin", "desc":"The chosen one.", "image": "/anakin.png"}, 
-        {"id": 5, "uni": "test2", "name": "Padme", "desc":"Queen and senator of Naboo.", "image": "/padme.png"},
-        {"id": 6, "uni": "test2", "name": "Palpatine", "desc":"Dark Lord of the Sith, also known as Darth Sidious.", "image": "/palpatine.png"},
-        {"id": 7, "uni": "test2", "name": "Obi-Wan", "desc":"Jedi Master", "image": "/obiwan.png"},
-        {"id": 8, "uni": "Invader Zim", "name": "Tak", "desc": "Here to get her revenge on Zim.", "image": "/tak.PNG"},
-        {"id": 9, "uni": "Invader Zim", "name": "Lard Nar", "desc": "Runs a resistance group fighting against the Irken Empire.", "image": "/lard nar.PNG"},
-        {"id": 10, "uni": "Invader Zim", "name": "The Snarlbeast", "desc": "This cute thing can shapeshift into a ruthless, terrifying beast.", "image": "/snarlbeast.PNG"},
-        {"id": 11, "uni": "Invader Zim", "name": "Zib", "desc": "A version of Dib who fused Zim's PAK to his brain.", "image": "/zib.PNG"}
+        {"id": 0, "uni": "trek", "alignment": "good", "name": "Kirk", "desc": "Captain of the USS Enterprise.", "image":"/kirk.png"},
+        {"id": 1, "uni": "trek", "alignment": "good", "name": "Spock", "desc": "Science Officer of the USS Enterprise", "image":"/spock.png"},
+        {"id": 2,"uni": "trek", "alignment": "good", "name": "Uhura", "desc": "Communication Officer of the USS Enterprise", "image":"/uhura.png"},
+        {"id": 3, "uni": "trek", "alignment": "evil", "name": "Gorn", "desc": "Man in a lizard costume", "image": "/gorn.png"},
+        {"id": 4, "uni": "star", "alignment": "evil", "name": "Anakin", "desc":"The chosen one.", "image": "/anakin.png"}, 
+        {"id": 5, "uni": "star", "alignment": "good", "name": "Padme", "desc":"Queen and senator of Naboo.", "image": "/padme.png"},
+        {"id": 6, "uni": "star", "alignment": "evil", "name": "Palpatine", "desc":"Dark Lord of the Sith, also known as Darth Sidious.", "image": "/palpatine.png"},
+        {"id": 7, "uni": "star", "alignment": "good", "name": "Obi-Wan", "desc":"Jedi Master", "image": "/obiwan.png"},
+        {"id": 8, "uni": "zim", "alignment": "evil", "name": "Tak", "desc": "Here to get her revenge on Zim.", "image": "/tak.PNG"},
+        {"id": 9, "uni": "zim", "alignment": "evil", "name": "Lard Nar", "desc": "Runs a resistance group fighting against the Irken Empire.", "image": "/lard nar.PNG"},
+        {"id": 10, "uni": "zim", "alignment": "good", "name": "The Snarlbeast", "desc": "This cute thing can shapeshift into a ruthless, terrifying beast.", "image": "/snarlbeast.PNG"},
+        {"id": 11, "uni": "zim", "alignment": "good", "name": "Zib", "desc": "A version of Dib who fused Zim's PAK to his brain.", "image": "/zib.PNG"}
 
     ]     

@@ -71,12 +71,14 @@ class ApplicationController {
     getCharacterByUni(uni) {
         console.log("ApplicationController: getCharacterByUni() started");
       
-        app.get('/application/characters/:uni', (req, res) => {
-            const universe = req.params.uni;
-            const filteredCharacters = applicationController.getCharacterByUni(universe);
-            res.json(filteredCharacters);
-          });
-        }
-    }
+        // Filter characters based on the selected universe
+        const filteredCharacters = this.finalData.filter(character => character.uni === uni);
+      
+        console.log('Filtered characters:', filteredCharacters);
+        
+        // Return the filtered characters or an error object if none found
+        return filteredCharacters.length > 0 ? filteredCharacters : { error: "No characters found for the selected universe", uni };
+      }
+    }      
           
 module.exports = ApplicationController;

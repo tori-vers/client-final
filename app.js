@@ -18,7 +18,7 @@ app.use('/application/', applicationRouter);
 app.use('/', publicRouter);
 
 
-const PORT = process.env.PORT || 3050;
+const PORT = process.env.PORT || 3058;
 app.listen(PORT, () => console.info(`Server has started on ${PORT}`));
 
 module.exports = app;

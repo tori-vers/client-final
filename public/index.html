@@ -122,9 +122,9 @@
             By Universe
           </button>
           <div class="dropdown-menu" aria-labelledby="universeDropdown">
-            <button class="dropdown-item" onclick="changeUniverse('trek')">Star Trek</button>
-            <button class="dropdown-item" onclick="changeUniverse('test1')">Universe 2</button>
-            <button class="dropdown-item" onclick="changeUniverse('test2')">Universe 3</button>
+            <button class="dropdown-item" onclick="changeUniverse('trek')" data-uni="trek">Star Trek</button>
+            <button class="dropdown-item" onclick="changeUniverse('star')" data-uni="star">Star Wars</button>
+            <button class="dropdown-item" onclick="changeUniverse('zim')" data-uni="zim">Invader Zim</button>
           </div>
 
         <!-- Dropdown for "Other Filter" -->
@@ -133,9 +133,8 @@
                 Good vs. Evil
             </button>
             <div class="dropdown-menu" aria-labelledby="universeDropdown">
-              <button class="dropdown-item" onclick="changeUniverse('trek')">Trek</button>
-              <button class="dropdown-item" onclick="changeUniverse('test1')">Test1</button>
-              <button class="dropdown-item" onclick="changeUniverse('test2')">Test2</button>
+              <button class="dropdown-item" onclick="changeAlignment('good')">Good</button>
+              <button class="dropdown-item" onclick="changeAlignment('evil')">Evil</button>
             </div>
 
             <div style="margin-top: 20px;">
@@ -145,7 +144,6 @@
     </aside>
 
     <main>
-      <div class="row">
         <!-- Card 1 -->
 
           <div class="character-card" onclick="changeContent(0)">
@@ -225,6 +223,7 @@
     <h1><div id="name"></div></h1>
     <img id="image">
     <div id="desc"></div>
+
     <script>
       // Create stars dynamically
       const starsContainer = document.querySelector('.stars');

@@ -1,18 +1,31 @@
 const express = require('express');
 const router = express.Router();
+const { Router } = require('express');
+const path = require('path');
 const ApplicationController = require('../application/applicationController');
 
 router.get('/character', function(req, res, next) {
-    const appController = new ApplicationController();
-    const html = appController.getAllCharacters();
-    res.send(html);
+  const appController = new ApplicationController();
+  const html = appController.getAllCharacters();
+  res.send(html);
 });
 
 router.get('/character/:id', function(req, res, next) {
-    const appController = new ApplicationController();
-    const html = appController.getCharacterById(req.params.id);
-    res.send(html);
+  const appController = new ApplicationController();
+  const html = appController.getCharacterById(req.params.id);
+  res.send(html);
 });
 
+router.get('/favorites', function(req, res, next) {
+  const appController = new ApplicationController();
+  const favorites = appController.getFavoriteCharacters();
+  res.json(favorites);
+});
+
+router.post('/character/toggle-favorite/:id', function(req, res, next) {
+  const appController = new ApplicationController();
+  const updatedFavorites = appController.toggleFavorite(req.params.id);
+  res.json(updatedFavorites);
+});
 
 module.exports = router;

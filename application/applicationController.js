@@ -1,5 +1,5 @@
 const fs = require('fs');
-
+const favoritesPath = 'application/data/favorites.json';
 class applicationController {
 
   constructor(req) {
@@ -23,5 +23,41 @@ class applicationController {
     return { error: "finalData character not found" , id};
   }
 }
+getFavorites() {
+    try {
+      const rawData = fs.readFileSync(favoritesPath);
+      return JSON.parse(rawData);
+    } catch (error) {
+      return [];
+    }
+  }
+
+  saveFavorites(favorites) {
+    const data = JSON.stringify(favorites);
+    fs.writeFileSync(favoritesPath, data);
+  }
+
+  toggleFavorite(characterId) {
+    const favorites = this.getFavorites();
+
+    // Toggle favorite status
+    const index = favorites.indexOf(characterId);
+    if (index === -1) {
+      favorites.push(characterId);
+    } else {
+      favorites.splice(index, 1);
+    }
+
+    // Save updated favorites
+    this.saveFavorites(favorites);
+
+    return favorites;
+  }
+
+  getFavoriteCharacters() {
+    const favorites = this.getFavorites();
+    return this.finalData.filter(character => favorites.includes(character.id));
+  }
 }
-module.exports = applicationController;
+
+module.exports = ApplicationController;

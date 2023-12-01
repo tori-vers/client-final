@@ -137,8 +137,12 @@
                 <button class="dropdown-item" onclick="changeFilter('test1')">Test1</button>
                 <button class="dropdown-item" onclick="changeFilter('test2')">Test2</button>
             </div>
-        </div>
-  
+        
+  <!-- favorite button -->
+  <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0); showFavorites()">Favorite</button>
+      <!-- Favorites will be populated dynamically -->
+  </div>
+</div>
       <!-- Button to show all characters -->
       <div style="margin-top: 20px;">
         <button class="btn btn-secondary" onclick="showAllCharacters()">All Characters</button>
@@ -157,49 +161,56 @@
         <div class="character-card" onclick="changeContent(0)">
           <img class="character-image" src="kirk.png" alt="Kirk">
           <div class="character-name">Kirk</div>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0, event)">Favorite</button>
+
         </div>
         <div class="character-card" onclick="changeContent(1)">
           <img class="character-image" src="spock.png" alt="Spock">
           <div class="character-name">Spock</div>
-          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0)">Favorite</button>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(1, event)">Favorite</button>
+
         </div>
         <div class="character-card" onclick="changeContent(2)">
           <img class="character-image" src="uhura.png" alt="Uhura">
           <div class="character-name">Uhura</div>
-          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0)">Favorite</button>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(2, event)">Favorite</button>
+
         </div>
         <div class="character-card" onclick="changeContent(3)">
           <img class="character-image" src="gorn.png" alt="Gorn">
  
           <div class="character-name">Gorn</div>
-          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0)">Favorite</button>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(3, event)">Favorite</button>
+
         </div>
         <div class="character-card" onclick="changeContent(4)">
           <img class="character-image" src="anakin.png" alt="Anakin Skywalker">
    
           <div class="character-name">Anakin Skywalker</div>
-          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0)">Favorite</button>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(4, event)">Favorite</button>
+
         </div>
         <div class="character-card" onclick="changeContent(5)">
           <img class="character-image" src="padme.png" alt="Padme Amidala">
           <div class="character-name">Padme Amidala</div>
-          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0)">Favorite</button>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(5, event)">Favorite</button>
+
         </div>
         <div class="character-card" onclick="changeContent(6)">
           <img class="character-image" src="palpatine.png" alt="Palpatine">
          
           <div class="character-name">Palpatine</div>
-          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0)">Favorite</button>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(6, event)">Favorite</button>
+
         </div>
         <div class="character-card" onclick="changeContent(7)">
           <img class="character-image" src="obiwan.png" alt="Obi-Wan Kenobi">
           <div class="character-name">Obi-Wan Kenobi</div>
-          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0)">Favorite</button>
+          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(7, event)">Favorite</button>
+
         </div>
       </div>
-    </aside>
-
-    <br>
+    
     <h1><div id="name"></div></h1>
     <img id="image">
     <div id="desc"></div>

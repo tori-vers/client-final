@@ -9,11 +9,11 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json()); // Parse JSON in requests
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded form data
-app.get('/api/favorites', function(req, res, next) {
-    const appController = new ApplicationController(); // Pass `req` if needed
-    const favorites = appController.getFavoritesPage();
+app.get('/application/favorites', function(req, res, next) {
+    const appController = new ApplicationController();
+    const favorites = appController.getFavoriteCharacters();
     res.json(favorites);
-});
+  });
 app.use('/application/', applicationRouter);
 app.use('/', publicRouter);
 

@@ -15,14 +15,14 @@ router.get('/character/:id', function(req, res, next) {
   const html = appController.getCharacterById(req.params.id);
   res.send(html);
 });
-<<<<<<< HEAD
-=======
+
 
 router.get('/character/:uni', function(req, res, next) {
   const appController = new ApplicationController();
-  const html = appController.getCharacterByUni(req.params.uni);
-  res.send(html);
+  const characters = appController.getCharacterByUni(req.params.uni);  // Use req.params.uni
+  res.json(characters);
 });
+
 
 router.get('/character/:alignment', function(req, res, next) {
   const appController = new ApplicationController();
@@ -33,7 +33,7 @@ router.get('/character/:alignment', function(req, res, next) {
 router.post('/favorites', function(req, res, next) {
     const appController = new ApplicationController();
     const { characterId, isFavorite } = req.body;
->>>>>>> 13d9b4c (added some filters prep)
+});
 
 router.get('/favorites', function(req, res, next) {
   const appController = new ApplicationController();

@@ -46,15 +46,6 @@ function showFavorites() {
   xhttp.open("GET", url, true);
   xhttp.send();
   xhttp.onload = function () {
-<<<<<<< HEAD
-    if (xhttp.status === 200) {
-      const favorites = JSON.parse(xhttp.responseText);
-      displayCharacters(favorites);
-    } else {
-      console.error("Error loading favorites", xhttp.status, xhttp.responseText);
-    }
-  };
-=======
   if (xhttp.status == 200) {
     data = JSON.parse(xhttp.responseText);
     refreshPage(data);
@@ -111,7 +102,6 @@ function toggleFavorite(characterId) {
 
   // Update favorites on the server
   updateFavoritesOnServer(characterId, !isFavorite);
->>>>>>> 13d9b4c (added some filters prep)
 }
 
 function displayCharacters(characters) {

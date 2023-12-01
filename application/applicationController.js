@@ -60,4 +60,4 @@ getFavorites() {
   }
 }
 
-module.exports = ApplicationController;
+module.exports = applicationController;

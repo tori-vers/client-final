@@ -1,4 +1,5 @@
 function changeContent(id) {
+    console.log("changeContent() started");
     var xhttp = new XMLHttpRequest();
     let url = `/application/character/${id}`; 
     xhttp.open("GET", url, true);
@@ -13,12 +14,14 @@ function changeContent(id) {
   };
 }
 function refreshPage(data) {
+  console.log("refreshPage() started");
   document.querySelector("#name").textContent = data.name;
   document.querySelector("#desc").textContent = data.desc;
   document.querySelector("#image").src = data.image;
 
 }
 function toggleFavorite(id) {
+  console.log("toggleFavorite() started");
   var xhttp = new XMLHttpRequest();
   let url = `/application/character/toggle-favorite/${id}`;
   xhttp.open("POST", url, true);
@@ -37,6 +40,7 @@ function toggleFavorite(id) {
 }
 
 function showFavorites() {
+  console.log("showFavorites() started");
   var xhttp = new XMLHttpRequest();
   let url = '/application/favorites';
   xhttp.open("GET", url, true);
@@ -52,6 +56,7 @@ function showFavorites() {
 }
 
 function displayCharacters(characters) {
+  console.log("displayCharacter() started");
   // Update the DOM to display only favorite characters
   const characterContainer = document.querySelector('.character-container');
   characterContainer.innerHTML = "";
@@ -63,6 +68,7 @@ function displayCharacters(characters) {
 }
 
 function createCharacterCard(character) {
+  console.log("createCharacterCard() started");
   // Create a character card HTML element
   const card = document.createElement('div');
   card.classList.add('character-card');
@@ -90,4 +96,4 @@ function createCharacterCard(character) {
 }
 
 // Load and display all characters on page load
-showFavorites();
+//showFavorites();

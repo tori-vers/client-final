@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
     [
         {"id": 0, "uni": "trek", "name": "Kirk", "desc": "Captain of the USS Enterprise.", "image":"/kirk.png"},
@@ -15,15 +15,3 @@
         {"id": 11, "uni": "Invader Zim", "name": "Zib", "desc": "A version of Dib who fused Zim's PAK to his brain.", "image": "/zib.PNG"}
 
     ]     
-=======
-[
-    {"id": 0, "uni": "trek", "alignment": "good", "name": "Kirk", "desc": "Captain of the USS Enterprise.", "image":"/kirk.png"},
-    {"id": 1, "uni": "trek", "alignment": "good", "name": "Spock", "desc": "Science Officer of the USS Enterprise", "image":"/spock.png"},
-    {"id": 2,"uni": "trek", "alignment": "good", "name": "Uhura", "desc": "Communication Officer of the USS Enterprise", "image":"/uhura.png"},
-    {"id": 3, "uni": "trek", "alignment": "evil", "name": "Gorn", "desc": "Man in a lizard costume", "image": "/gorn.png"},
-    {"id": 4, "uni": "star", "alignment": "evil", "name": "Anakin", "desc":"The chosen one.", "image": "/anakin.png"}, 
-    {"id": 5, "uni": "star", "alignment": "good", "name": "Padme", "desc":"Queen and senator of Naboo.", "image": "/padme.png"},
-    {"id": 6, "uni": "star", "alignment": "evil", "name": "Palpatine", "desc":"Dark Lord of the Sith, also known as Darth Sidious.", "image": "/palpatine.png"},
-    {"id": 7, "uni": "star", "alignment": "good", "name": "Obi-Wan", "desc":"Jedi Master", "image": "/obiwan.png"}      
-]
->>>>>>> 13d9b4c (added some filters prep)

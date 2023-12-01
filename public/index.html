@@ -7,6 +7,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 
+
   <script src="application.js"></script>
   <script src="/routes/public.js"></script>
 
@@ -117,50 +118,41 @@
 
         <!-- Dropdown for "By Universe" -->
         <div class="dropdown" style="margin-top: 20px;">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="universeDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                By Universe
-            </button>
-            <div class="dropdown-menu" aria-labelledby="universeDropdown">
-                <button class="dropdown-item" onclick="changeUniverse('trek')">Star Trek</button>
-                <button class="dropdown-item" onclick="changeUniverse('star')">Star Wars</button>
-                <button class="dropdown-item" onclick="changeUniverse('zim')">Invader Zim</button>
-            </div>
-        </div>
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="universeDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            By Universe
+          </button>
+          <div class="dropdown-menu" aria-labelledby="universeDropdown">
+            <button class="dropdown-item" onclick="changeUniverse('trek')">Star Trek</button>
+            <button class="dropdown-item" onclick="changeUniverse('test1')">Universe 2</button>
+            <button class="dropdown-item" onclick="changeUniverse('test2')">Universe 3</button>
+          </div>
 
         <!-- Dropdown for "Other Filter" -->
         <div class="dropdown" style="margin-top: 20px;">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="otherFilterDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Good vs. Evil
             </button>
-            <div class="dropdown-menu" aria-labelledby="otherFilterDropdown">
-                <button class="dropdown-item" onclick="changeAlignment('good')">Good</button>
-                <button class="dropdown-item" onclick="changeAlignment('evil')">Evil</button>
+            <div class="dropdown-menu" aria-labelledby="universeDropdown">
+              <button class="dropdown-item" onclick="changeUniverse('trek')">Trek</button>
+              <button class="dropdown-item" onclick="changeUniverse('test1')">Test1</button>
+              <button class="dropdown-item" onclick="changeUniverse('test2')">Test2</button>
             </div>
-        
-  <!-- favorite button -->
-  <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0); showFavorites()">Favorite</button>
-      <!-- Favorites will be populated dynamically -->
-  </div>
-</div>
-      <!-- Button to show all characters -->
-      <div style="margin-top: 20px;">
-        <button class="btn btn-secondary" onclick="showAllCharacters()">All Characters</button>
-      </div>
-      <!-- Button for favorites -->
-      
-    </div>
-  <div class="container">
-    <header class="d-flex justify-content-between align-items-center" id="buttons">
-      
-    </header>
 
-    <aside class="d-flex justify-content-center">
-      <div class="character-container">
-        <!-- Character Cards as Buttons -->
-        <div class="character-card" onclick="changeContent(0)">
-          <img class="character-image" src="kirk.png" alt="Kirk">
-          <div class="character-name">Kirk</div>
-          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0, event)">Favorite</button>
+            <div style="margin-top: 20px;">
+            <button class="btn btn-secondary" onclick="showAllCharacters()">All Characters</button>
+            </div>
+
+    </aside>
+
+    <main>
+      <div class="row">
+        <!-- Card 1 -->
+
+          <div class="character-card" onclick="changeContent(0)">
+            <img class="character-image" src="kirk.png" alt="Kirk">
+            <div class="character-name">Kirk</div>
+            <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0, event)">Favorite</button>
+          </div>
 
         </div>
         <div class="character-card" onclick="changeContent(1)">
@@ -169,6 +161,7 @@
           <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(1, event)">Favorite</button>
 
         </div>
+
         <div class="character-card" onclick="changeContent(2)">
           <img class="character-image" src="uhura.png" alt="Uhura">
           <div class="character-name">Uhura</div>
@@ -213,11 +206,6 @@
           <div class="character-name">Tak</div>
           <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(8, event)">Favorite</button>
 
-        </div>
-        <div class="character-card" onclick="changeContent(9)">
-          <img class="character-image" src="lard nar.PNG" alt="Lard Nar">
-          <div class="character-name">Lard Nar</div>
-          <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(9, event)">Favorite</button>
 
         </div>
         <div class="character-card" onclick="changeContent(10)">

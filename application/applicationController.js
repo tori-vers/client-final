@@ -49,11 +49,12 @@ getFavorites() {
     } else {
       favorites.splice(index, 1);
     }
+  }
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
     // Save updated favorites
-    this.saveFavorites(favorites);
-=======
+    //this.saveFavorites(favorites);
+    
   getCharacterByUni(uni) {
     const universe = this.finalData[uni];
     return universe;
@@ -79,7 +80,7 @@ getFavorites() {
         const character = this.finalData[characterId];
         return { ...character, isFavorite };
       });
->>>>>>> 13d9b4c (added some filters prep)
+//13d9b4c (added some filters prep)
 
     return favorites;
   }

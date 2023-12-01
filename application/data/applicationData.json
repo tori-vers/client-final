@@ -1,5 +1,4 @@
 
-
     [
         {"id": 0, "uni": "trek", "alignment": "good", "name": "Kirk", "desc": "Captain of the USS Enterprise.", "image":"/kirk.png"},
         {"id": 1, "uni": "trek", "alignment": "good", "name": "Spock", "desc": "Science Officer of the USS Enterprise", "image":"/spock.png"},

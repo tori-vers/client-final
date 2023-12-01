@@ -7,5 +7,10 @@
         {"id": 4, "uni": "test2", "name": "Anakin", "desc":"The chosen one.", "image": "/anakin.png"}, 
         {"id": 5, "uni": "test2", "name": "Padme", "desc":"Queen and senator of Naboo.", "image": "/padme.png"},
         {"id": 6, "uni": "test2", "name": "Palpatine", "desc":"Dark Lord of the Sith, also known as Darth Sidious.", "image": "/palpatine.png"},
-        {"id": 7, "uni": "test2", "name": "Obi-Wan", "desc":"Jedi Master", "image": "/obiwan.png"}   
+        {"id": 7, "uni": "test2", "name": "Obi-Wan", "desc":"Jedi Master", "image": "/obiwan.png"},
+        {"id": 8, "uni": "Invader Zim", "name": "Tak", "desc": "Here to get her revenge on Zim.", "image": "/tak.PNG"},
+        {"id": 9, "uni": "Invader Zim", "name": "Lard Nar", "desc": "Runs a resistance group fighting against the Irken Empire.", "image": "/lard nar.PNG"},
+        {"id": 10, "uni": "Invader Zim", "name": "The Snarlbeast", "desc": "This cute thing can shapeshift into a ruthless, terrifying beast.", "image": "/snarlbeast.PNG"},
+        {"id": 11, "uni": "Invader Zim", "name": "Zib", "desc": "A version of Dib who fused Zim's PAK to his brain.", "image": "/zib.PNG"}
+
     ]     

@@ -1,10 +1,11 @@
-[
-    {"id": 0, "uni": "trek", "name": "Kirk", "desc": "Captain of the USS Enterprise.", "image":"/kirk.png"},
-    {"id": 1, "uni": "test1", "name": "Spock", "desc": "Science Officer of the USS Enterprise", "image":"/spock.png"},
-    {"id": 2,"uni": "test2", "name": "Uhura", "desc": "Communication Officer of the USS Enterprise", "image":"/uhura.png"},
-    {"id": 3, "uni": "test2", "name": "Gorn", "desc": "Man in a lizard costume", "image": "/gorn.png"},
-    {"id": 4, "uni": "test2", "name": "Anakin", "desc":"The chosen one.", "image": "/anakin.png"}, 
-    {"id": 5, "uni": "test2", "name": "Padme", "desc":"Queen and senator of Naboo.", "image": "/padme.png"},
-    {"id": 6, "uni": "test2", "name": "Palpatine", "desc":"Dark Lord of the Sith, also known as Darth Sidious.", "image": "/palpatine.png"},
-    {"id": 7, "uni": "test2", "name": "Obi-Wan", "desc":"Jedi Master", "image": "/obiwan.png"}      
-]
+
+    [
+        {"id": 0, "uni": "trek", "name": "Kirk", "desc": "Captain of the USS Enterprise.", "image":"/kirk.png"},
+        {"id": 1, "uni": "test1", "name": "Spock", "desc": "Science Officer of the USS Enterprise", "image":"/spock.png"},
+        {"id": 2,"uni": "test2", "name": "Uhura", "desc": "Communication Officer of the USS Enterprise", "image":"/uhura.png"},
+        {"id": 3, "uni": "test2", "name": "Gorn", "desc": "Man in a lizard costume", "image": "/gorn.png"},
+        {"id": 4, "uni": "test2", "name": "Anakin", "desc":"The chosen one.", "image": "/anakin.png"}, 
+        {"id": 5, "uni": "test2", "name": "Padme", "desc":"Queen and senator of Naboo.", "image": "/padme.png"},
+        {"id": 6, "uni": "test2", "name": "Palpatine", "desc":"Dark Lord of the Sith, also known as Darth Sidious.", "image": "/palpatine.png"},
+        {"id": 7, "uni": "test2", "name": "Obi-Wan", "desc":"Jedi Master", "image": "/obiwan.png"}   
+    ]     

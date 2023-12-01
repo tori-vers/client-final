@@ -15,6 +15,25 @@ router.get('/character/:id', function(req, res, next) {
   const html = appController.getCharacterById(req.params.id);
   res.send(html);
 });
+<<<<<<< HEAD
+=======
+
+router.get('/character/:uni', function(req, res, next) {
+  const appController = new ApplicationController();
+  const html = appController.getCharacterByUni(req.params.uni);
+  res.send(html);
+});
+
+router.get('/character/:alignment', function(req, res, next) {
+  const appController = new ApplicationController();
+  const html = appController.getCharacterByAlignment(req.params.alignment);
+  res.send(html);
+});
+
+router.post('/favorites', function(req, res, next) {
+    const appController = new ApplicationController();
+    const { characterId, isFavorite } = req.body;
+>>>>>>> 13d9b4c (added some filters prep)
 
 router.get('/favorites', function(req, res, next) {
   const appController = new ApplicationController();

@@ -50,8 +50,36 @@ getFavorites() {
       favorites.splice(index, 1);
     }
 
+<<<<<<< HEAD
     // Save updated favorites
     this.saveFavorites(favorites);
+=======
+  getCharacterByUni(uni) {
+    const universe = this.finalData[uni];
+    return universe;
+  }
+
+  getCharacterByAlignment(alignment) {
+    const alignment = this.finalData[alignment];
+    return alignment;
+  }
+
+  getAllFavorites() {
+    return this.favorites;
+  }
+
+  updateFavoriteStatus(id, isFavorite) {
+    this.favorites[id] = isFavorite;
+    fs.writeFileSync("application/data/favoritesData.json", JSON.stringify(this.favorites, null, 2));
+  }
+  getFavoritesPage() {
+    const favorites = Object.entries(this.favorites)
+      .filter(([characterId, isFavorite]) => isFavorite)
+      .map(([characterId, isFavorite]) => {
+        const character = this.finalData[characterId];
+        return { ...character, isFavorite };
+      });
+>>>>>>> 13d9b4c (added some filters prep)
 
     return favorites;
   }

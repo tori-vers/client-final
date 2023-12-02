@@ -158,9 +158,11 @@
             </button>
 
             <div class="dropdown-menu" aria-labelledby="universeDropdown">
-              <button class="dropdown-item" onclick="changeUniverse('trek')" data-uni="trek">Star Trek</button>
-              <button class="dropdown-item" onclick="changeUniverse('star')" data-uni="star">Star Wars</button>
-              <button class="dropdown-item" onclick="changeUniverse('zim')" data-uni="zim">Invader Zim</button>
+              <button class="dropdown-item" onclick="filterByUni('all')">--All Characters--</button>
+              <button class="dropdown-item" onclick="filterByUni('trek')">Star Trek</button>
+              <button class="dropdown-item" onclick="filterByUni('war')">Star Wars</button>
+              <button class="dropdown-item" onclick="filterByUni('zim')">Invader Zim</button>
+              
             </div>
           </div>
 
@@ -171,85 +173,87 @@
             </button>
 
             <div class="dropdown-menu" aria-labelledby="universeDropdown">
-              <button class="dropdown-item" onclick="changeAlignment('good')">Good</button>
-              <button class="dropdown-item" onclick="changeAlignment('evil')">Evil</button>
+              <button class="dropdown-item" onclick="filterByAlignment('all')">--Both--</button>
+              <button class="dropdown-item" onclick="filterByAlignment('good')">Good</button>
+              <button class="dropdown-item" onclick="filterByAlignment('evil')">Evil</button>
             </div>
 
-            <div style="margin-top: 20px;">
-              <button class="btn btn-secondary" onclick="showAllCharacters()">All Characters</button>
-            </div>
+        
           </div>
         </div>
 
         <main>
           <!-- thumbnail cards -->
-          <div class="character-card" onclick="changeContent(0)">
+
+
+
+          <div class="character-card trek good" onclick="changeContent(0)">
             <img class="character-image" src="kirk thumb.PNG" alt="Kirk">
             <div class="character-name">Kirk</div>
             <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(0, event)">Favorite</button>
           </div>
 
-          <div class="character-card" onclick="changeContent(1)">
+          <div class="character-card trek good" onclick="changeContent(1)">
             <img class="character-image" src="spock thumb.png" alt="Spock">
             <div class="character-name">Spock</div>
             <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(1, event)">Favorite</button>
           </div>
 
-          <div class="character-card" onclick="changeContent(2)">
+          <div class="character-card trek good" onclick="changeContent(2)">
             <img class="character-image" src="uhura thumb.png" alt="Uhura">
             <div class="character-name">Uhura</div>
             <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(2, event)">Favorite</button>
           </div>
         
-          <div class="character-card" onclick="changeContent(3)">
+          <div class="character-card trek evil" onclick="changeContent(3)">
             <img class="character-image" src="gorn thumb.png" alt="Gorn">
             <div class="character-name">Gorn</div>
             <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(3, event)">Favorite</button>
           </div>
         
-          <div class="character-card" onclick="changeContent(4)">
+          <div class="character-card war evil" onclick="changeContent(4)">
             <img class="character-image" src="anakin thumb.png" alt="Anakin Skywalker">
             <div class="character-name">Anakin Skywalker</div>
             <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(4, event)">Favorite</button>
           </div>
         
-          <div class="character-card" onclick="changeContent(5)">
+          <div class="character-card war good" onclick="changeContent(5)">
             <img class="character-image" src="padme thumb.png" alt="Padme Amidala">
             <div class="character-name">Padme Amidala</div>
             <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(5, event)">Favorite</button>
           </div>
         
-          <div class="character-card" onclick="changeContent(6)">
+          <div class="character-card war evil" onclick="changeContent(6)">
             <img class="character-image" src="palp thumb.png" alt="Palpatine">
             <div class="character-name">Palpatine</div>
             <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(6, event)">Favorite</button>
           </div>
         
-          <div class="character-card" onclick="changeContent(7)">
+          <div class="character-card war good" onclick="changeContent(7)">
             <img class="character-image" src="obi thumb.png" alt="Obi-Wan Kenobi">
             <div class="character-name">Obi-Wan Kenobi</div>
             <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(7, event)">Favorite</button>
           </div>
         
-          <div class="character-card" onclick="changeContent(8)">
+          <div class="character-card zim evil" onclick="changeContent(8)">
             <img class="character-image" src="tak thumb.PNG" alt="Tak">
             <div class="character-name">Tak</div>
             <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(8, event)">Favorite</button>
           </div>
 
-          <div class="character-card" onclick="changeContent(9)">
+          <div class="character-card zim good" onclick="changeContent(9)">
             <img class="character-image" src="lard thumb.PNG" alt="Lard Nar">
             <div class="character-name">Lard Nar</div>
             <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(9, event)">Favorite</button>
           </div>
         
-          <div class="character-card" onclick="changeContent(10)">
+          <div class="character-card zim good" onclick="changeContent(10)">
             <img class="character-image" src="snarl thumb.PNG" alt="The Snarlbeast">
             <div class="character-name">The Snarlbeast</div>
             <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(10, event)">Favorite</button>
           </div>
         
-          <div class="character-card" onclick="changeContent(11)">
+          <div class="character-card zim evil" onclick="changeContent(11)">
             <img class="character-image" src="zib thumb.PNG" alt="Zib">
             <div class="character-name">Zib</div>
             <button class="btn btn-secondary favorite-button" onclick="toggleFavorite(11, event)">Favorite</button>
@@ -266,6 +270,62 @@
     </div>
 
     <script>
+
+function filterByUni(universe) {
+  console.log("FILTERING");
+    const characterCards = document.querySelectorAll('.character-card');
+
+    for (let i = 0; i < characterCards.length; i++) {
+      const card = characterCards[i];
+      const cardUni = card.classList.contains(universe);
+      card.style.display = cardUni || universe === 'all' ? 'block' : 'none';
+    }
+  }
+
+  function filterByAlignment(alignment) {
+    console.log("alignment");
+  const characterCards = document.querySelectorAll('.character-card');
+  for (let i = 0; i < characterCards.length; i++) {
+    const card = characterCards[i];
+    const cardAlign = card.classList.contains(alignment);
+    console.log(`Card ${i + 1} - Alignment: ${cardAlign}`);
+    card.style.display = cardAlign || alignment === 'all' ? 'block' : 'none';
+  }
+}
+
+
+
+
+  function filterBySelections() {
+
+    const selectedUniverse = document.getElementById('universeDropdown').value; // . value of current selected in combo box
+    const selectedGoodEvil = document.getElementById('otherFilterDropdown').value; // value of current selected in combo box
+    const characterCards = document.querySelectorAll('.character-card');
+
+// include the character if universe is all && alignment is both || -> both all
+// universe = the selected universe && alignment = selected alignment
+// + other scenarios
+
+for (let i = 0; i < characterCards.length; i++) {
+    const card = characterCards[i];
+    const cardUni = card.classList.contains(selectedUniverse);
+    const cardGoodEvil = card.classList.contains(selectedGoodEvil);
+    const matchesUni = cardUni || selectedUniverse === 'all';
+    const matchesAlignment = cardGoodEvil || selectedGoodEvil === 'both';
+
+    card.style.display = matchesUni && matchesAlignment ? 'block' : 'none';
+  }
+}
+
+  function clearFilters() {
+    document.getElementById('universeDropdown').value = 'all';
+    document.getElementById('otherFilterDropdown').value = 'both';
+
+    // getelemid
+  }
+  // clear filters
+  // set to all and both 
+
       // Create stars dynamically
       const starsContainer = document.querySelector('.stars');
       for (let i = 0; i < 200; i++) {

@@ -15,6 +15,7 @@ function changeContent(id) {
 }
 function refreshPage(data) {
 console.log("refreshPage() started");
+
 document.querySelector("#name").textContent = data.name;
 document.querySelector("#desc").textContent = data.desc;
 document.querySelector("#image").src = data.image;
@@ -69,16 +70,16 @@ function changeUniverse(uni) {
 
   // Hide/show character cards based on the selected universe
   const characterCards = document.querySelectorAll('.character-card');
-  characterCards.forEach(card => {
+  for (let i = 0; i < characterCards.length; i++) {
+    const card = characterCards[i];
     const cardUni = card.getAttribute('data-uni');
     card.style.display = cardUni === uni ? 'block' : 'none';
-  });
+  }
 
-  // Make an API request to get characters for the selected universe
-  const xhttp = new XMLHttpRequest();
-  const url = `/application/characters/uni/${uni}`;
-  xhttp.open("GET", url, true);
-  xhttp.send();
+    const xhttp = new XMLHttpRequest();
+    const url = `/application/character/${uni}`;
+    xhttp.open("GET", url, true);
+     xhttp.send();
 
   xhttp.onload = function () {
     if (xhttp.status == 200) {
@@ -89,6 +90,7 @@ function changeUniverse(uni) {
     }
   };
 }
+
 
 function changeAlignment(alignment) {
 var xhttp = new XMLHttpRequest();
@@ -124,6 +126,24 @@ $characterCard.toggleClass('favorite', !isFavorite);
 updateFavoritesOnServer(characterId, !isFavorite);
 
 }
+
+  function showAllCharacters() {
+    console.log("showAllCharacters() started");
+    var xhttp = new XMLHttpRequest();
+    let url = '/application/character'; 
+    xhttp.open("GET", url, true);
+    xhttp.send();
+    xhttp.onload = function () {
+      if (xhttp.status === 200) {
+        const characters = JSON.parse(xhttp.responseText);
+        displayCharacters(characters);
+      } else {
+        console.error("Error loading characters", xhttp.status, xhttp.responseText);
+      }
+    };
+  }
+  
+
 
 function displayCharacters(characters) {
 console.log("displayCharacter() started");
